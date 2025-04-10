@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.util.List;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -30,5 +31,9 @@ public class Branch {
     public Branch(String branchName, Franchise franchise) {
         this.name = branchName;
         this.franchise = franchise;
+    }
+
+    public Branch(String branchName) {
+        this.name = branchName;
     }
 }
