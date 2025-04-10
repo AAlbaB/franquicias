@@ -9,7 +9,6 @@ import com.example.franquicias.repository.FranchiseRepository;
 import com.example.franquicias.request.AddBranchRequest;
 import com.example.franquicias.request.BranchUpdateRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

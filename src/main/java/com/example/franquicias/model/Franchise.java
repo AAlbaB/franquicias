@@ -22,4 +22,8 @@ public class Franchise {
     @JsonIgnore
     @OneToMany(mappedBy = "franchise", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Branch> branches;
+
+    public Franchise(String franchiseName) {
+        this.name = franchiseName;
+    }
 }
