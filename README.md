@@ -51,7 +51,7 @@ Para ejecutar el proyecto utilizando Docker Compose, sigue estos pasos:
 3. **Construir y ejecutar los contenedores**:
 
 ```bash
-   docker-compose up --build
+   docker-compose up --build -d
 ```
 
 ## Acceder a la aplicación
@@ -61,8 +61,8 @@ Una vez que los contenedores estén en funcionamiento, la aplicación estará di
 Se pueden verificar el funcionamiento con la colección adjunta `collections/coleccionFranquicias.postman_collection.json`
 
 ## Detener la aplicación
-Para detener y eliminar los contenedores en ejecución, puedes utilizar el siguiente comando:
+Para detener y eliminar los contenedores en ejecución, puedes utilizar el siguiente comando (Quitar -v para dejar los volúmenes creados):
 
 ```bash
-   docker-compose down
+   docker-compose down -v
 ```
