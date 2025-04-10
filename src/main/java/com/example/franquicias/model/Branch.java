@@ -12,14 +12,18 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Franquicia {
+public class Branch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "franchise_id")
+    private Franchise franchise;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "franquicia", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Sucursal> sucursales;
+    @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> products;
 }
