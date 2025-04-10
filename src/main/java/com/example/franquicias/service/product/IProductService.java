@@ -11,5 +11,4 @@ public interface IProductService {
     Product updateProduct(ProductUpdateRequest product, Long productId);
     void deleteProduct(Long productId);
     List<Product> getAllProducts();
-    List<Product> getMaxProductsByFranchise(Long franchiseId);
 }

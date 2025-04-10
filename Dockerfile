@@ -1,6 +1,16 @@
-FROM openjdk:17-jdk-slim
+# Etapa 1: Construir el JAR con Maven
+FROM maven:3.9.2-eclipse-temurin-17 AS build
 WORKDIR /app
-COPY target/franquicias-0.0.1-SNAPSHOT.jar app.jar
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Etapa 2: Crear la imagen final
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 EXPOSE 9191
-COPY wait-for-it.sh /wait-for-it.sh
-RUN chmod +x /wait-for-it.sh
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

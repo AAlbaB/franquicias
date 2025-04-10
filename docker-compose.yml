@@ -23,7 +23,6 @@ services:
       - mysql-db
     ports:
       - "9191:9191"
-    command: ["/wait-for-it.sh", "mysql-db:3306", "--timeout=60", "--", "java", "-jar", "app.jar"]
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/franquicias
       SPRING_DATASOURCE_USERNAME: root

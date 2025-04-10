@@ -1,5 +1,6 @@
 package com.example.franquicias.controller;
 
+import com.example.franquicias.dto.ProductDTO;
 import com.example.franquicias.exceptions.ResourceNotFoundException;
 import com.example.franquicias.model.Franchise;
 import com.example.franquicias.request.FranchiseRequest;
@@ -44,5 +45,15 @@ public class FranchiseController {
     public ResponseEntity<ApiResponse> getAllBranches() {
         List<Franchise> franchises = franchiseService.getAllFranchises();
         return ResponseEntity.ok(new ApiResponse("success", franchises));
+    }
+
+    @GetMapping("/{franchiseName}/maxInventoryProducts")
+    public ResponseEntity<ApiResponse> getTopProductosPorSucursal(@PathVariable String franchiseName) {
+        try {
+            List<ProductDTO> products = franchiseService.getProductsTopInventoryByBranch(franchiseName);
+            return ResponseEntity.ok(new ApiResponse("success", products));
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
+        }
     }
 }
